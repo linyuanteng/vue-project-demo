@@ -1,0 +1,62 @@
+@import "./variables.scss";
+
+/****************************** 形状混入 ******************************/
+// 普通宽高
+@mixin size($width, $height, $radius: 0) {
+  width: $width;
+  height: $height;
+
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
+}
+// 正方形
+@mixin square($length, $radius: 0) {
+  width: $length;
+  height: $length;
+
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
+}
+// 圆形
+@mixin circle($diameter) {
+  width: $diameter;
+  height: $diameter;
+  border-radius: calc($diameter / 2);
+}
+// 线条
+@mixin line($thickness, $direction, $color: $color-line) {
+  background: $color;
+
+  @if $direction == "horizontal" {
+    height: $thickness;
+  } @else if $direction == "vertical" {
+    width: $thickness;
+  }
+}
+// 横向线条
+@mixin horizontal-line($thickness, $color: $color-line) {
+  @include line($thickness, "horizontal", $color);
+}
+// 纵向线条
+@mixin vertical-line($thickness, $color: $color-line) {
+  @include line($thickness, "vertical", $color);
+}
+
+/****************************** 文本混入 ******************************/
+// 文字行数
+@mixin text-line($numberOfLines) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $numberOfLines == 1 {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box !important;
+    word-break: break-all;
+    white-space: normal !important;
+    -webkit-line-clamp: $numberOfLines;
+    -webkit-box-orient: vertical !important;
+  }
+}
