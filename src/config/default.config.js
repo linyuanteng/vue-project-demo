@@ -29,7 +29,7 @@ module.exports = {
   // 是否使用图片验证码
   useImageCaptcha: false,
   // 是否使用滑块验证码
-  useSlideCaptcha: false,
+  useSliderCaptcha: false,
   // 是否使用路由配置作为侧边栏菜单
   useRoutesAsMenu: true,
   // 是否显示顶部标签栏
